@@ -1,0 +1,4 @@
+en	de	0.12
+en	fr	0.13
+en	it	0.11
+en	es	0.10
