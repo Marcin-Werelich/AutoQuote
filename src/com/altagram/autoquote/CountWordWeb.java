@@ -28,7 +28,6 @@ public class CountWordWeb {
 	private int wordCount = 0;
 	private IFilter documentFilter = null;
 	private String status;
-	private final String STATUS_WRONG_FILETYPE = "File format not supported.";
 	private final String STATUS_OK = "OK";
 	
 	
@@ -42,7 +41,7 @@ public class CountWordWeb {
 		
 		if (documentFilter == null) {
 			wordCount = 0;
-			status = STATUS_WRONG_FILETYPE;
+			throw new IOException(inputFile.getName() + " - file type not supported.");
 		}
 		//TODO add multifile
 		else {

@@ -2,3 +2,98 @@ en	de	0.12
 en	fr	0.13
 en	it	0.11
 en	es	0.10
+en	pt-br	0.10
+en	zh-cn	0.12
+en	zh-tw	0.13
+en	ja	0.14
+en	ko	0.13
+
+de	en	0.13
+de	fr	0.14
+de	it	0.12
+de	es	0.11
+de	pt-br	0.12
+de	zh-cn	0.14
+de	zh-tw	0.15
+de	ja	0.16
+de	ko	0.15
+
+fr	en	0.13
+fr	de	0.14
+fr	it	0.12
+fr	es	0.11
+fr	pt-br	0.12
+fr	zh-cn	0.14
+fr	zh-tw	0.15
+fr	ja	0.16
+fr	ko	0.15
+
+es	en	0.13
+es	de	0.14
+es	it	0.12
+es	fr	0.11
+es	pt-br	0.12
+es	zh-cn	0.14
+es	zh-tw	0.15
+es	ja	0.16
+es	ko	0.15
+
+it	en	0.13
+it	de	0.14
+it	es	0.12
+it	fr	0.11
+it	pt-br	0.12
+it	zh-cn	0.14
+it	zh-tw	0.15
+it	ja	0.16
+it	ko	0.15
+
+zh-cn	en	0.13
+zh-cn	de	0.14
+zh-cn	es	0.12
+zh-cn	fr	0.11
+zh-cn	pt-br	0.12
+zh-cn	it	0.14
+zh-cn	zh-tw	0.15
+zh-cn	ja	0.16
+zh-cn	ko	0.15
+
+zh-tw	en	0.13
+zh-tw	de	0.14
+zh-tw	es	0.12
+zh-tw	fr	0.11
+zh-tw	pt-br	0.12
+zh-tw	it	0.14
+zh-tw	zh-cn	0.15
+zh-tw	ja	0.16
+zh-tw	ko	0.15
+
+ja	en	0.13
+ja	de	0.14
+ja	es	0.12
+ja	fr	0.11
+ja	pt-br	0.12
+ja	it	0.14
+ja	zh-cn	0.15
+ja	zh-tw	0.16
+ja	ko	0.15
+
+ko	en	0.13
+ko	de	0.14
+ko	es	0.12
+ko	fr	0.11
+ko	pt-br	0.12
+ko	it	0.14
+ko	zh-cn	0.15
+ko	zh-tw	0.16
+ko	ja	0.15
+
+ru	en	0.13
+ru	de	0.14
+ru	es	0.12
+ru	fr	0.11
+ru	pt-br	0.12
+ru	it	0.14
+ru	zh-cn	0.15
+ru	zh-tw	0.16
+ru	ja	0.15

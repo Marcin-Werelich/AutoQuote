@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class QuoteElement implements Serializable {
 	
 	private String languagePair = null;
-	private String totalPrice = null;
+	private String totalUnitPrice = null;
 	private String unitPrice = null;
 	
 	//public QuoteElement (String sourceLanguage, String targetLanguage, String totalPrice, String unitPrice) {
@@ -15,8 +15,8 @@ public class QuoteElement implements Serializable {
 		return languagePair;
 	}
 	
-	public String getTotalPrice() {
-		return totalPrice;
+	public String getTotalUnitPrice() {
+		return totalUnitPrice;
 	}
 	
 	public String getUnitPrice() {
@@ -27,8 +27,8 @@ public class QuoteElement implements Serializable {
 		this.languagePair = languagePair;
 	}
 	
-	public void setTotalPrice(String totalPrice) {
-		this.totalPrice = totalPrice;
+	public void setTotalUnitPrice(String totalPrice) {
+		this.totalUnitPrice = totalPrice;
 	}
 	
 	public void setUnitPrice(String unitPrice) {

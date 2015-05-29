@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- saved from url=(0035)http://altagram.de/en/legal-notice/ -->
 <html lang="en-US" prefix="og: http://ogp.me/ns#" class="csstransforms csstransforms3d csstransitions"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 
@@ -23,7 +24,7 @@
 
 <link rel="icon" type="image/png" href="http://altagram.de/wp-content/uploads/2014/07/fav-16.png">
 <!-- This site is optimized with the Yoast WordPress SEO plugin v1.7.4 - https://yoast.com/wordpress/plugins/seo/ -->
-<title>Cost Estimate</title>
+<title>Cost estimation</title>
 <link rel="canonical" href="./AutoQuote_files/AutoQuote.html">
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
@@ -297,48 +298,7 @@ lc.style.display='none';
 	<div id="social-box">
 
 		<ul>
-
-			
-
-
-			
-
-
-			
-
-
-			
-
-
-			
-
-
-			
-
-
-			
-
-
-			
-
-
-			
-
-
-			
-
-
-			
-
-
-			
-			
-
-			
-
-
-			
-			
+		
 
 		</ul>
 
@@ -359,7 +319,7 @@ lc.style.display='none';
 	<div class="stack stack-section-title">
 <div class="container">
 		
-					<h1 id="page-title">Cost estimate details:</h1>
+					<h1 id="page-title">Translation cost estimate:</h1>
 		
 		
 
@@ -370,30 +330,47 @@ lc.style.display='none';
 		<div class="stack stack-page-content" id="stack-38-0">
 			<div class="container"><div class="row"><div class="span12">
 			
-				<form action="getQuote" method="post" enctype="multipart/form-data">   
-					<p><h2>1. Upload input file</h2></p>
-					<input type="file" name="file" value="Select file"/>
-					<p>
-					<br>
-					<br>
-					<h2>2. Select source language</h2>
-					<input type="radio" name="source" value="en" /> English
-					<br>
-					<input type="radio" name="source" value="fr" /> French
-					<br>
-					<input type="radio" name="source" value="de" /> German
-					<br>
-					<br>
-					<h2>3. Select target languages</h2>
-					<input type="checkbox" name="target" value="fr"/ > French
-					<input type="checkbox" name="target" value="it"/ > Italian
-					<input type="checkbox" name="target" value="de"/ > German
-					<input type="checkbox" name="target" value="es"/ > Spanish
-					<br>
-					<br>
-					
-					<input type="submit" value="Get quote!">
-				</form>
+				<form action="getQuote" name="quoteForm" method="post" enctype="multipart/form-data">
+    <p><h2>1. Select input file(s):</h2></p>
+    <input type="file" name="file" value="Select file" multiple required/>
+    <br/><br/><p>Supported file types: .DOCX, .XLSX, .PPTX, OpenOffice formats, XML, .IDML, .TXT
+    <br>
+
+    <h2>2. Select source language:</h2>
+
+    <select id="src" name="source" required onchange="return disableDuplicateTarget()">
+        <option value ="X" disabled selected>Select source language...</option>
+        <option value="en">English</option>
+        <option value="fr">French</option>
+        <option value="de">German</option>
+        <option value="es">Spanish</option>
+        <option value="zh-cn">Chinese Simplified</option>
+        <option value="zh-tw">Chinese Traditional</option>
+        <option value="ja">Japanese</option>
+        <option value="ko">Korean</option>
+        <option value="ru">Russian</option>
+    </select>
+    <br><br>
+    <h2>3. Select target languages:</h2>
+    <table>
+        <tr>
+            <td><input type="checkbox" name="target" value="en"/ > English</td>
+            <td><input type="checkbox" name="target" value="fr"/ > French</td>
+            <td><input type="checkbox" name="target" value="it"/ > Italian</td>
+            <td><input type="checkbox" name="target" value="de"/ > German</td>
+            <td><input type="checkbox" name="target" value="es"/ > Spanish (Europe)</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="target" value="zh-cn"/ > Chinese Simplified</td>
+            <td><input type="checkbox" name="target" value="zh-tw" /> Chinese Traditional</td>
+            <td><input type="checkbox" name="target" value="ja" /> Japanese</td>
+            <td><input type="checkbox" name="target" value="ko" /> Korean</td>
+            <td><input type="checkbox" name="target" value="pt-br"/ > Portuguese (Brazil)</td>
+        </tr>
+    </table>
+    <input type="submit" value="Submit data" onclick="return validateForm();">
+</form>
+
 			</div></div></div>
 		</br></br>
 </div><!-- .stack-page-content -->
@@ -468,5 +445,33 @@ var commonL10n = {"warnDelete":"You are about to permanently delete the selected
 <script type="text/javascript" src="./Resources/js/jquery.tweet.min.js"></script>
 <script type="text/javascript" src="./Resources/js/theme.js"></script>
 
+<script type="text/javascript" language="JavaScript">
+    function validateForm() {
+        var index;
+        var select = document.getElementById('src');
+        if(select.value.match('X')) {
+            alert('Please select the source lanuage!');
+            return false;
+        }
+        
+        var checkBoxes = document.getElementsByName('target');
+        for (index = 0; index < checkBoxes.length; index++) {
+            if (checkBoxes[index].checked) {
+                return true;
+            }
+        }
+        alert('Please select at least one target lanuage!');
+        return false;
+    }
+    
+    function disableDuplicateTarget() {
+        var select = document.getElementById('src');
+        var checkBoxes = document.getElementsByName('target');
+        for (index = 0; index < checkBoxes.length; index++) {
+            checkBoxes[index].disabled = checkBoxes[index].value.match(select.value);
+        }
+        return true;
+    }
+</script>
 
 <div id="fancybox-tmp"></div><div id="fancybox-loading"><div></div></div><div id="fancybox-overlay"></div><div id="fancybox-wrap"><div id="fancybox-outer"><div class="fancybox-bg" id="fancybox-bg-n"></div><div class="fancybox-bg" id="fancybox-bg-ne"></div><div class="fancybox-bg" id="fancybox-bg-e"></div><div class="fancybox-bg" id="fancybox-bg-se"></div><div class="fancybox-bg" id="fancybox-bg-s"></div><div class="fancybox-bg" id="fancybox-bg-sw"></div><div class="fancybox-bg" id="fancybox-bg-w"></div><div class="fancybox-bg" id="fancybox-bg-nw"></div><div id="fancybox-content"></div><a id="fancybox-close"></a><div id="fancybox-title"></div><a href="javascript:;" id="fancybox-left"><span class="fancy-ico" id="fancybox-left-ico"></span></a><a href="javascript:;" id="fancybox-right"><span class="fancy-ico" id="fancybox-right-ico"></span></a></div></div></body></html>
