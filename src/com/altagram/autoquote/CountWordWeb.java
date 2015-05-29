@@ -32,7 +32,7 @@ public class CountWordWeb {
 	
 	
 	
-	public CountWordWeb (File inputFile, String sourceLocale) throws IOException {
+	public CountWordWeb (FileItem inputFile, String sourceLocale) throws IOException {
 		
 		wordCount = 0;
 		LocaleId sourceLocaleId = new LocaleId(sourceLocale);
@@ -46,7 +46,7 @@ public class CountWordWeb {
 		//TODO add multifile
 		else {
 			status = STATUS_OK;
-			documentFilter.open(new RawDocument(inputFile.toURI(), "UTF-8", sourceLocaleId));
+			documentFilter.open(new RawDocument(inputFile.getInputStream(), "UTF-8", sourceLocaleId));
 			while (documentFilter.hasNext() ) {
 				Event event = documentFilter.next();
 				if (event.getEventType() == EventType.TEXT_UNIT ) {
@@ -72,7 +72,7 @@ public class CountWordWeb {
 
 	
 	
-private void checkFilter (File sourceFile) {
+private void checkFilter (FileItem sourceFile) {
 		
 		String fileName = sourceFile.getName();
 		//MS Office

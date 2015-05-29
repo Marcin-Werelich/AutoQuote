@@ -12,6 +12,7 @@ import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map.Entry;
+import java.util.logging.Logger;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -40,7 +41,6 @@ public class AutoQuote extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		// response.sendRedirect("Quote.html");
 		request.getRequestDispatcher(WELCOME_PAGE_URL).forward(request,
 				response);
 
@@ -53,58 +53,43 @@ public class AutoQuote extends HttpServlet {
 		double totalPrice = 0;
 		double tempPrice;
 		double tempQuote;
-		
-		final String UPLOAD_PATH = getServletContext().getRealPath("")
-				+ File.separator + "uploads";
+
 		String sourceLanguage = "";
 		String sourceLanguageFull = "";
 		String targetLanguageFull = "";
-		String targetLanguagesAll = "";
 		String tempPriceFormatted = "";
 		String tempQuoteFormatted = "";
 		String tempFileName = "";
-		
+
 		HashMap<String, Double> priceList;
 		HashMap<String, String> fullLanguageNamesList;
-		
-		List<String> uploadedFileNames = new ArrayList<String>();		
+
 		List<String> targetLanguages = new ArrayList<String>();
 		List<String> fileNamesList = new ArrayList<String>();
 		List<QuoteElement> quoteElementList = new ArrayList<QuoteElement>();
+		List<FileItem> fileUploadList = new ArrayList<FileItem>();
 
-		//File fileUpload = null;
-		List<File> fileUploadList = new ArrayList<File>();
-		DecimalFormat priceFormat = AutoQuoteUtils.getPirceFormat(PRICE_DECIMAL_FORMAT, PRICE_CURRENCY_CODE, RoundingMode.HALF_UP);
-		
+		DecimalFormat priceFormat = AutoQuoteUtils
+				.getPirceFormat(PRICE_DECIMAL_FORMAT, PRICE_CURRENCY_CODE,
+						RoundingMode.HALF_UP);
 
-		// TODO Add error pages
 		// Process data from HTTP request
-		try {
-			
-			List<FileItem> multiPartParsed = AutoQuoteUtils.parseMultipart(
-					request, UPLOAD_PATH);
-			
-			if (multiPartParsed == null) { throw new Exception(NO_FILE_ERROR_MESSAGE); }
-				
-			
-			File uploadDir = new File(UPLOAD_PATH);
 
-			if (!uploadDir.exists()) {
-				uploadDir.mkdir();
+		try {
+
+			List<FileItem> multiPartParsed = AutoQuoteUtils
+					.parseMultipart(request);
+
+			if (multiPartParsed == null) {
+				throw new Exception(NO_FILE_ERROR_MESSAGE);
 			}
 
 			if (multiPartParsed != null && multiPartParsed.size() > 0) {
 				for (FileItem item : multiPartParsed) {
 					if (!item.isFormField()) {
 						tempFileName = new File(item.getName()).getName();
-						item.write(new File(UPLOAD_PATH + File.separator
-								+ tempFileName));
-//						fileUpload = new File(UPLOAD_PATH + File.separator
-//								+ new File(item.getName()).getName());
-						fileUploadList.add(new File(UPLOAD_PATH + File.separator
-								+ tempFileName));
+						fileUploadList.add(item);
 						fileNamesList.add(tempFileName);
-
 					}
 				}
 
@@ -130,9 +115,11 @@ public class AutoQuote extends HttpServlet {
 		// Process input file, get word count
 
 		try {
-			for(File fileUpload:fileUploadList)
-				wordCount += AutoQuoteUtils.getWordCountFromInputFile(fileUpload,
-						sourceLanguage);
+			for (FileItem fileUpload : fileUploadList) {
+				wordCount += AutoQuoteUtils.getWordCountFromInputFile(
+						fileUpload, sourceLanguage);
+			}
+
 		}
 
 		catch (Exception ex) {
@@ -142,10 +129,10 @@ public class AutoQuote extends HttpServlet {
 		}
 		try {
 			priceList = AutoQuoteUtils.getPriceList(getServletContext()
-					.getRealPath(PRICE_LIST_PATH));
+					.getResourceAsStream(PRICE_LIST_PATH));
 			fullLanguageNamesList = AutoQuoteUtils
 					.getFullLanguageNamesList(getServletContext()
-							.getRealPath(LANG_LIST_PATH));
+							.getResourceAsStream(LANG_LIST_PATH));
 			sourceLanguageFull = AutoQuoteUtils.getFullLanguageName(
 					sourceLanguage, fullLanguageNamesList);
 		} catch (Exception ex) {
@@ -153,7 +140,7 @@ public class AutoQuote extends HttpServlet {
 					AutoQuoteUtils.setupErrorRequest(request, ex), response);
 			return;
 		}
-//TODO total price
+		// TODO total price
 		for (String targetLanguage : targetLanguages) {
 
 			tempPrice = AutoQuoteUtils.getPrice(sourceLanguage, targetLanguage,
@@ -176,8 +163,9 @@ public class AutoQuote extends HttpServlet {
 
 		request.getRequestDispatcher(RESPONSE_PAGE_URL).forward(
 				AutoQuoteUtils.setupOkResponseRequest(request,
-						Integer.toString(wordCount), priceFormat.format(totalPrice), fileNamesList.toString(),
-						quoteElementList), response);
+						Integer.toString(wordCount),
+						priceFormat.format(totalPrice),
+						fileNamesList.toString(), quoteElementList), response);
 
 	}
 }

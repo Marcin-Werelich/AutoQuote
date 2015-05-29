@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.io.UnsupportedEncodingException;
@@ -13,12 +15,14 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.io.IOException;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.Currency;
 import java.util.Dictionary;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Scanner;
 
 import javax.annotation.Resources;
 import javax.servlet.ServletContext;
@@ -32,13 +36,12 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 public class AutoQuoteUtils {
 
-	public static List<FileItem> parseMultipart(HttpServletRequest request,
-			String uploadPath) throws Exception {
+	public static List<FileItem> parseMultipart(HttpServletRequest request)
+			throws Exception {
 
 		boolean isMultipart = ServletFileUpload.isMultipartContent(request);
 
 		if (isMultipart) {
-			File returnFile;
 			DiskFileItemFactory factory = new DiskFileItemFactory();
 			factory.setRepository(new File(System.getProperty("java.io.tmpdir")));
 			ServletFileUpload upload = new ServletFileUpload(factory);
@@ -48,34 +51,41 @@ public class AutoQuoteUtils {
 			return null;
 
 	}
-	
-	public static DecimalFormat getPirceFormat(String pattern, String currencyCode, RoundingMode roundingMode) {
+
+	public static DecimalFormat getPirceFormat(String pattern,
+			String currencyCode, RoundingMode roundingMode) {
 		DecimalFormat priceFormat = new DecimalFormat(pattern);
 		priceFormat.setCurrency(Currency.getInstance(currencyCode));
-		//priceFormat.setRoundingMode(roundingMode);
+		// priceFormat.setRoundingMode(roundingMode);
 		return priceFormat;
 	}
-	
-	public static int getWordCountFromInputFile(File inputFile,
+
+	public static int getWordCountFromInputFile(FileItem inputFile,
 			String sourceLanguage) throws IOException {
 		CountWordWeb CWW = new CountWordWeb(inputFile, sourceLanguage);
 		return CWW.getWordCount();
 
 	}
 
-	public static HashMap<String, Double> getPriceList(String inputPath)
+	public static HashMap<String, Double> getPriceList(InputStream input)
 			throws IOException {
 
+		List<String> lineList = new ArrayList<String>();
 		HashMap<String, Double> priceList = new HashMap<String, Double>();
 		String[] lineSplit;
-		List<String> lineList = Files.readAllLines(Paths.get(inputPath),
-				Charset.defaultCharset());
+
+		Scanner inputReader = new Scanner(new InputStreamReader(
+				input));
+
+		while (inputReader.hasNextLine()) {
+			lineList.add(inputReader.nextLine());
+		}
 
 		for (String line : lineList) {
-			if (!line.matches("")){
-			lineSplit = line.split("\t");
-			priceList.put(lineSplit[0] + ">" + lineSplit[1],
-					Double.parseDouble(lineSplit[2]));
+			if (line != null && !line.matches("")) {
+				lineSplit = line.split("\t");
+				priceList.put(lineSplit[0] + ">" + lineSplit[1],
+						Double.parseDouble(lineSplit[2]));
 			}
 		}
 
@@ -95,16 +105,22 @@ public class AutoQuoteUtils {
 	}
 
 	public static HashMap<String, String> getFullLanguageNamesList(
-			String inputPath) throws IOException {
-
+			InputStream input) throws IOException {
+		List<String> lineList = new ArrayList<String>();
 		HashMap<String, String> langList = new HashMap<String, String>();
 		String[] lineSplit;
-		List<String> lineList = Files.readAllLines(Paths.get(inputPath),
-				Charset.defaultCharset());
+		Scanner inputReader = new Scanner(new InputStreamReader(
+				input));
+
+		while (inputReader.hasNextLine()) {
+			lineList.add(inputReader.nextLine());
+		}
 
 		for (String line : lineList) {
-			lineSplit = line.split("\t");
-			langList.put(lineSplit[0], lineSplit[1]);
+			if (line != null) {
+				lineSplit = line.split("\t");
+				langList.put(lineSplit[0], lineSplit[1]);
+			}
 		}
 
 		return langList;
@@ -126,8 +142,8 @@ public class AutoQuoteUtils {
 	}
 
 	public static QuoteElement setupQuoteItem(QuoteElement item,
-			String sourceLanguage, String targetLanguage, String totalUnitPrice,
-			String unitPrice) {
+			String sourceLanguage, String targetLanguage,
+			String totalUnitPrice, String unitPrice) {
 
 		String tempLanguagePair = sourceLanguage + " > " + targetLanguage;
 
@@ -151,8 +167,8 @@ public class AutoQuoteUtils {
 	}
 
 	public static HttpServletRequest setupOkResponseRequest(
-			HttpServletRequest request, String wordCount, String totalPrice, String fileName,
-			List<QuoteElement> quoteElementList)
+			HttpServletRequest request, String wordCount, String totalPrice,
+			String fileName, List<QuoteElement> quoteElementList)
 			throws UnsupportedEncodingException {
 
 		request.setCharacterEncoding("UTF-8");
