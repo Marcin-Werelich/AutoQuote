@@ -97,3 +97,4 @@ ru	it	0.14
 ru	zh-cn	0.15
 ru	zh-tw	0.16
 ru	ja	0.15
+ru	ko	0.15

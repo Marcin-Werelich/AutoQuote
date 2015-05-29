@@ -6,5 +6,6 @@ it	Italian
 ja	Japanese
 ko	Korean
 pt-br	Portuguese (Brazil)
+ru	Russian
 zh-cn	Chinese Simplified
 zh-tw	Chinese Traditional
