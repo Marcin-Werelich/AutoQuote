@@ -88,7 +88,7 @@ public class AutoQuoteUtils {
 						Double.parseDouble(lineSplit[2]));
 			}
 		}
-
+		inputReader.close();
 		return priceList;
 	}
 
@@ -122,7 +122,8 @@ public class AutoQuoteUtils {
 				langList.put(lineSplit[0], lineSplit[1]);
 			}
 		}
-
+		
+		inputReader.close();
 		return langList;
 	}
 

@@ -317,7 +317,7 @@ lc.style.display='none';
 <li id="menu-item-368" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-368"><a href="http://altagram.de/en/news/">News</a></li>
 </ul>			</nav>
 		</div>
-		<div id="footer-left">Copyright © 2013-2014 Altagram.de - All Rights Reserved</div>
+		<div id="footer-left">AutoQuote interface developed by Marcin Werelich, Copyright © 2015 Altagram.de - All Rights Reserved</div>
 	</div>	
 </footer>
 

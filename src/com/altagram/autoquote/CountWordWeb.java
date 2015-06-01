@@ -43,7 +43,7 @@ public class CountWordWeb {
 			wordCount = 0;
 			throw new IOException(inputFile.getName() + " - file type not supported.");
 		}
-		//TODO add multifile
+		
 		else {
 			status = STATUS_OK;
 			documentFilter.open(new RawDocument(inputFile.getInputStream(), "UTF-8", sourceLocaleId));
@@ -120,13 +120,7 @@ private void checkFilter (FileItem sourceFile) {
 		else documentFilter = null;
 	}
 	
-	public static void main (String[] args) throws IOException {
 	
-//		HashMap<String, Double> testMap = AutoQuoteUtils.getPriceList();
-//		for(Map.Entry<String, Double> entry: testMap.entrySet()) {
-//			System.out.println(entry.toString());
-//		}
-	}
 	
 }
 	
