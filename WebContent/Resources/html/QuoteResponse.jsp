@@ -298,7 +298,7 @@ lc.style.display='none';
 				</table>
 				<br/>
 				<br/>Please note that all prices are in Euro.<br/><br/>Please note that this is only an  approximate, automatically-generated cost estimate. 
-				For a detailed cost analysis, please <a href="http://altagram.de/en/contact/">contact us</a> directly per email.<br/>
+				For a detailed cost analysis, please <a href="mailto:hello@altagram.de">contact us</a> directly per email.<br/>
 		</div></div></div>
 		</br></br>
 </div><!-- .stack-page-content -->
