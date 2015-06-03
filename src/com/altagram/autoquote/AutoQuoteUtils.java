@@ -142,7 +142,7 @@ public class AutoQuoteUtils {
 		return wordCount * price;
 	}
 
-	public static QuoteElement setupQuoteItem(QuoteElement item,
+	public static QuoteElementBean setupQuoteItem(QuoteElementBean item,
 			String sourceLanguage, String targetLanguage,
 			String totalUnitPrice, String unitPrice) {
 
@@ -169,7 +169,7 @@ public class AutoQuoteUtils {
 
 	public static HttpServletRequest setupOkResponseRequest(
 			HttpServletRequest request, String wordCount, String totalPrice,
-			String fileName, List<QuoteElement> quoteElementList)
+			String fileName, List<QuoteElementBean> quoteElementList)
 			throws UnsupportedEncodingException {
 
 		request.setCharacterEncoding("UTF-8");

@@ -2,14 +2,14 @@ package com.altagram.autoquote;
 
 import java.io.Serializable;
 
-public class QuoteElement implements Serializable {
+public class QuoteElementBean implements Serializable {
 	
 	private String languagePair = null;
 	private String totalUnitPrice = null;
 	private String unitPrice = null;
 	
 	//public QuoteElement (String sourceLanguage, String targetLanguage, String totalPrice, String unitPrice) {
-	public QuoteElement () {}
+	public QuoteElementBean () {}
 	
 	public String getLanguagePair() {
 		return languagePair;

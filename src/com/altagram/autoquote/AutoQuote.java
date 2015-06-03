@@ -66,7 +66,7 @@ public class AutoQuote extends HttpServlet {
 
 		List<String> targetLanguages = new ArrayList<String>();
 		List<String> fileNamesList = new ArrayList<String>();
-		List<QuoteElement> quoteElementList = new ArrayList<QuoteElement>();
+		List<QuoteElementBean> quoteElementList = new ArrayList<QuoteElementBean>();
 		List<FileItem> fileUploadList = new ArrayList<FileItem>();
 
 		DecimalFormat priceFormat = AutoQuoteUtils
@@ -155,7 +155,7 @@ public class AutoQuote extends HttpServlet {
 			totalPrice += tempQuote;
 
 			quoteElementList.add(AutoQuoteUtils.setupQuoteItem(
-					new QuoteElement(), sourceLanguageFull, targetLanguageFull,
+					new QuoteElementBean(), sourceLanguageFull, targetLanguageFull,
 					tempQuoteFormatted, tempPriceFormatted));
 		}
 
