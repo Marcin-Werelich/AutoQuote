@@ -7,14 +7,16 @@
 <html>
 <body>
 
-		
+<head>
+<title>Cost Estimation</title>
+</head>		
 <h1 id="page-title">Translation cost estimate:</h1>
 
-		<form action="Quote" name="quoteForm" method="post" enctype="multipart/form-data">
+<form action="Quote" name="quoteForm" method="post" enctype="multipart/form-data">
     <p><h2>1. Select input file(s):</h2></p>
     <input type="file" name="file" value="Select file" multiple required/>
     <br/><br/>Supported file types: .DOCX, .XLSX, .PPTX, OpenOffice formats, .HTML, .XML, .IDML, .TXT
-    <br>The uploaded files will not be stored on the server and are deleted after analysis.<br><br>
+    <br><br/>The uploaded files will not be stored on the server and are deleted after analysis.<br><br>
 
     <h2>2. Select source language:</h2>
 
@@ -39,8 +41,9 @@
     	</c:forEach>    	
         </tr>         
     </table>
+    </br>
     <input type="submit" value="Submit data" onclick="return validateForm();">
-</form>
+ </form>
 
 <script type="text/javascript" language="JavaScript">
     function validateForm() {
