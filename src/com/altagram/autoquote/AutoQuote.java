@@ -12,6 +12,7 @@ import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map.Entry;
+import java.util.TreeMap;
 import java.util.logging.Logger;
 
 import javax.servlet.RequestDispatcher;
@@ -26,22 +27,34 @@ import org.apache.commons.fileupload.FileItem;
 
 public class AutoQuote extends HttpServlet {
 
-	private final String PRICE_LIST_PATH = "/Resources/files/pricelist.txt";
-	private final String LANG_LIST_PATH = "/Resources/files/languageList.txt";
-	private final String WELCOME_PAGE_URL = "/Resources/html/Quote.html";
-	private final String RESPONSE_PAGE_URL = "/Resources/html/QuoteResponse.jsp";
-	private final String ERROR_PAGE_URL = "/Resources/html/ErrorResponse.jsp";
-	private final String PRICE_DECIMAL_FORMAT = "0.00#";
-	private final String PRICE_CURRENCY_CODE = "EUR";
-	private final String NO_FILE_ERROR_MESSAGE = "There was an error with the file upload, please try again.";
-
 	public AutoQuote() {
 
 	}
 
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher(WELCOME_PAGE_URL).forward(request,
+		
+		
+		HashMap<String, Double> priceList = AutoQuoteUtils
+				.getPriceList(getServletContext().getResourceAsStream(
+						Constants.PRICE_LIST_PATH));
+
+		TreeMap<String, String> sourceLangList = AutoQuoteUtils
+				.getFullLanguageNamesList(getServletContext()
+						.getResourceAsStream(Constants.SOURCE_LANG_LIST_PATH));
+
+		TreeMap<String, String> targetLangList = AutoQuoteUtils
+				.getFullLanguageNamesList(getServletContext()
+						.getResourceAsStream(Constants.TARGET_LANG_LIST_PATH));
+		
+		
+		AdminDataBean adminData = AdminAutoQuoteUtils.setupAdminDataBean(
+				sourceLangList, targetLangList, priceList);
+		
+		
+		request.setAttribute("adminData", adminData);
+
+		request.getRequestDispatcher(Constants.WELCOME_PAGE_URL).forward(request,
 				response);
 
 	}
@@ -62,7 +75,7 @@ public class AutoQuote extends HttpServlet {
 		String tempFileName = "";
 
 		HashMap<String, Double> priceList;
-		HashMap<String, String> fullLanguageNamesList;
+		TreeMap<String, String> fullLanguageNamesList;
 
 		List<String> targetLanguages = new ArrayList<String>();
 		List<String> fileNamesList = new ArrayList<String>();
@@ -70,7 +83,7 @@ public class AutoQuote extends HttpServlet {
 		List<FileItem> fileUploadList = new ArrayList<FileItem>();
 
 		DecimalFormat priceFormat = AutoQuoteUtils
-				.getPirceFormat(PRICE_DECIMAL_FORMAT, PRICE_CURRENCY_CODE,
+				.getPirceFormat(Constants.PRICE_DECIMAL_FORMAT, Constants.PRICE_CURRENCY_CODE,
 						RoundingMode.HALF_UP);
 
 		// Process data from HTTP request
@@ -81,7 +94,7 @@ public class AutoQuote extends HttpServlet {
 					.parseMultipart(request);
 
 			if (multiPartParsed == null) {
-				throw new Exception(NO_FILE_ERROR_MESSAGE);
+				throw new Exception(Constants.NO_FILE_ERROR_MESSAGE);
 			}
 
 			if (multiPartParsed != null && multiPartParsed.size() > 0) {
@@ -107,7 +120,7 @@ public class AutoQuote extends HttpServlet {
 
 		catch (Exception ex) {
 
-			request.getRequestDispatcher(ERROR_PAGE_URL).forward(
+			request.getRequestDispatcher(Constants.ERROR_PAGE_URL).forward(
 					AutoQuoteUtils.setupErrorRequest(request, ex), response);
 			return;
 		}
@@ -123,20 +136,22 @@ public class AutoQuote extends HttpServlet {
 		}
 
 		catch (Exception ex) {
-			request.getRequestDispatcher(ERROR_PAGE_URL).forward(
+			request.getRequestDispatcher(Constants.ERROR_PAGE_URL).forward(
 					AutoQuoteUtils.setupErrorRequest(request, ex), response);
 			return;
 		}
 		try {
 			priceList = AutoQuoteUtils.getPriceList(getServletContext()
-					.getResourceAsStream(PRICE_LIST_PATH));
+					.getResourceAsStream(Constants.PRICE_LIST_PATH));
+			
 			fullLanguageNamesList = AutoQuoteUtils
 					.getFullLanguageNamesList(getServletContext()
-							.getResourceAsStream(LANG_LIST_PATH));
+							.getResourceAsStream(Constants.TARGET_LANG_LIST_PATH));
+			
 			sourceLanguageFull = AutoQuoteUtils.getFullLanguageName(
 					sourceLanguage, fullLanguageNamesList);
 		} catch (Exception ex) {
-			request.getRequestDispatcher(ERROR_PAGE_URL).forward(
+			request.getRequestDispatcher(Constants.ERROR_PAGE_URL).forward(
 					AutoQuoteUtils.setupErrorRequest(request, ex), response);
 			return;
 		}
@@ -161,7 +176,7 @@ public class AutoQuote extends HttpServlet {
 
 		// Forward to jsp response
 
-		request.getRequestDispatcher(RESPONSE_PAGE_URL).forward(
+		request.getRequestDispatcher(Constants.QUOTE_RESPONSE_PAGE_URL).forward(
 				AutoQuoteUtils.setupOkResponseRequest(request,
 						Integer.toString(wordCount),
 						priceFormat.format(totalPrice),

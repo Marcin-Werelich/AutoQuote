@@ -23,6 +23,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Scanner;
+import java.util.TreeMap;
 
 import javax.annotation.Resources;
 import javax.servlet.ServletContext;
@@ -104,10 +105,10 @@ public class AutoQuoteUtils {
 		return 0;
 	}
 
-	public static HashMap<String, String> getFullLanguageNamesList(
+	public static TreeMap<String, String> getFullLanguageNamesList(
 			InputStream input) throws IOException {
 		List<String> lineList = new ArrayList<String>();
-		HashMap<String, String> langList = new HashMap<String, String>();
+		TreeMap<String, String> langList = new TreeMap<String, String>();
 		String[] lineSplit;
 		Scanner inputReader = new Scanner(new InputStreamReader(
 				input));
@@ -119,16 +120,15 @@ public class AutoQuoteUtils {
 		for (String line : lineList) {
 			if (line != null) {
 				lineSplit = line.split("\t");
-				langList.put(lineSplit[0], lineSplit[1]);
+				langList.put(lineSplit[1], lineSplit[0]);
 			}
-		}
-		
+		}	
 		inputReader.close();
 		return langList;
 	}
 
 	public static String getFullLanguageName(String languageShortName,
-			HashMap<String, String> langList) {
+			TreeMap<String, String> langList) {
 
 		for (Entry<String, String> entry : langList.entrySet()) {
 			if (entry.getKey().matches(languageShortName))
