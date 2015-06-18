@@ -6,15 +6,15 @@
 
 				<table>
 					<tr>
-						<td><h5>File name(s):</h5></td><td><h5><c:out value="${fileName}"/></h5></td>
+						<td><h3>File name(s):</h3></td><td><h3><c:out value="${fileName}"/></h3></td>
 					</tr>
 					<tr>
-						<td><h5>Total word count:</h5></td><td><h5><c:out value="${wordCount}"/></h5></td>
+						<td><h3>Total word count:</h3></td><td><h3><c:out value="${wordCount}"/></h3></td>
 					</tr>
 				</table>
 				<table border="1" >
 					<tr>
-						<td>Language Pair</td><td>Price per word</td><td>Total in €</td>
+						<td align="center">Language Pair</td><td align="center">Price per word</td><td align="center">Total in €</td>
 					</tr>
 					<c:forEach items="${quoteElementList}" var="quoteElement">
 						<tr>
@@ -23,10 +23,10 @@
 							<td align="center"><c:out value="${quoteElement.totalUnitPrice}"/></td>
 						</tr>
 					</c:forEach>
-					<tr></tr><tr><td></td><td><h5>Total w/o VAT:</h5></td><td><h5><c:out value="${totalPrice}"/></h5></td></tr>
+					<tr></tr><tr><td></td><td><b>Total w/o VAT:</b></td><td><b><c:out value="${totalPrice}"/></h5></td></tr>
 				</table>
 				<br/>
 				<br/>Please note that all prices are in Euro.<br/><br/>Please note that this is only an  approximate, automatically-generated cost estimate. 
-				For a detailed cost analysis, please <a href="mailto:hello@altagram.de">contact us</a> directly per email.<br/>
+				For a detailed cost analysis, please contact us directly per email.<br/>
 		
 </body></html>

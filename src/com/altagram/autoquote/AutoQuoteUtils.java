@@ -131,8 +131,8 @@ public class AutoQuoteUtils {
 			TreeMap<String, String> langList) {
 
 		for (Entry<String, String> entry : langList.entrySet()) {
-			if (entry.getKey().matches(languageShortName))
-				return entry.getValue();
+			if (entry.getValue().matches(languageShortName))
+				return entry.getKey();
 		}
 		return null;
 	}
@@ -180,10 +180,5 @@ public class AutoQuoteUtils {
 
 		return request;
 	}
-
-	// TODO: unzipping
-	// public static List<FileItem> unzipToList (FileItem inputFile) {
-	//
-	// }
 
 }
