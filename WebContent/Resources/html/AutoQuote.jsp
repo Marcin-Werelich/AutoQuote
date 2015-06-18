@@ -4,8 +4,8 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <!-- saved from url=(0035)http://altagram.de/en/legal-notice/ -->
-<html lang="en-US" prefix="og: http://ogp.me/ns#" class="csstransforms csstransforms3d csstransitions"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+<html>
+<body>
 
 		
 <h1 id="page-title">Translation cost estimate:</h1>
@@ -70,4 +70,5 @@
         return true;
     }
 </script>
+
 </body></html>

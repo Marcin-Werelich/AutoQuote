@@ -3,8 +3,7 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core"%>
 <!DOCTYPE html>
-<html lang="en-US" prefix="og: http://ogp.me/ns#"
-	class="csstransforms csstransforms3d csstransitions">
+<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
