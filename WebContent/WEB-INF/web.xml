@@ -42,8 +42,14 @@ holder.
             com.altagram.autoquote.AutoQuote
         </servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>AdminAutoQuote</servlet-name>
+    <servlet-class>
+            com.altagram.autoquote.AdminAutoQuote
+        </servlet-class>
+  </servlet>
   <servlet-mapping>
     <servlet-name>AutoQuote</servlet-name>
-    <url-pattern>/Quote</url-pattern>
+    <url-pattern>/Admin</url-pattern>
   </servlet-mapping>
 </web-app>

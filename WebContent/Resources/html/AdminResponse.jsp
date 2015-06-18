@@ -9,13 +9,11 @@
 
 <table>
 	<tr>
-		<td><h5>File name(s):</h5></td>
+		<td><h5>Language List:</h5></td>
 		<td><h5>
 				<c:out value="${fileName}" />
-			</h5></td>
-	</tr>
-	<tr>
-		<td><h5>Total word count:</h5></td>
+			</h5></td>	
+		<td><h5>Price List</h5></td>
 		<td><h5>
 				<c:out value="${wordCount}" />
 			</h5></td>
