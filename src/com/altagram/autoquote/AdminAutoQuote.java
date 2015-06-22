@@ -23,6 +23,8 @@ public class AdminAutoQuote extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
+		
+		
 		HashMap<String, Double> priceList = AutoQuoteUtils
 				.getPriceList(getServletContext().getResourceAsStream(
 						Constants.PRICE_LIST_PATH));
