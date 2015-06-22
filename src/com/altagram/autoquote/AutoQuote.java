@@ -25,6 +25,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.fileupload.FileItem;
 
+import com.altagram.autoquotebeans.AdminDataBean;
+import com.altagram.autoquotebeans.QuoteElementBean;
+
 public class AutoQuote extends HttpServlet {
 
 	public AutoQuote() {

@@ -69,18 +69,6 @@
 		<servlet-name>AdminLogin</servlet-name>
 		<url-pattern>/login</url-pattern>
 	</servlet-mapping>
-	
-	<servlet>
-		<servlet-name>AdminLoginError</servlet-name>
-		<servlet-class>
-			com.altagram.autoquote.AdminLoginError
-		</servlet-class>
-	</servlet>
-	
-	<servlet-mapping>
-		<servlet-name>AdminLoginError</servlet-name>
-		<url-pattern>/adminLoginError</url-pattern>
-	</servlet-mapping>
 
 	<security-constraint>
 		<web-resource-collection>
@@ -88,21 +76,21 @@
 			<url-pattern>/admin</url-pattern>
 		</web-resource-collection>
 		<auth-constraint>
-			<role-name>AQAdminUser</role-name>
+			<role-name>aq-admin</role-name>
 		</auth-constraint>
 	</security-constraint>
 
 	<login-config>
 		<auth-method>FORM</auth-method>
 		<form-login-config>
-			<form-login-page>/login</form-login-page>
-			<form-error-page>/adminLoginError</form-error-page>
+			<form-login-page>/Security/AdminLoginForm.jsp</form-login-page>
+			<form-error-page>/Security/AdminLoginErrorForm.html</form-error-page>
 		</form-login-config>
 	</login-config>
 
 	<security-role>
 		<description />
-		<role-name>AQAdminUser</role-name>
+		<role-name>aq-admin</role-name>
 	</security-role>
 
 </web-app>

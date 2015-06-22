@@ -35,6 +35,9 @@ import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
+import com.altagram.autoquotebeans.QuoteElementBean;
+import com.altagram.wordcounter.CountWordWeb;
+
 public class AutoQuoteUtils {
 
 	public static List<FileItem> parseMultipart(HttpServletRequest request)

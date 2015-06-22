@@ -12,7 +12,7 @@
 </head>		
 <h1 id="page-title">Translation cost estimate:</h1>
 
-<form action="quote" name="quoteForm" method="post" enctype="multipart/form-data">
+<form action="/" name="quoteForm" method="post" enctype="multipart/form-data">
     <p><h2>1. Select input file(s):</h2></p>
     <input type="file" name="file" value="Select file" multiple required/>
     <br/><br/>Supported file types: .DOCX, .XLSX, .PPTX, OpenOffice formats, .HTML, .XML, .IDML, .TXT

@@ -5,6 +5,8 @@ import java.util.TreeMap;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.altagram.autoquotebeans.AdminDataBean;
+
 public class AdminAutoQuoteUtils {
 
 	public static AdminDataBean setupAdminDataBean(

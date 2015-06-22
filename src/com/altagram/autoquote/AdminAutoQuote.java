@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.altagram.autoquotebeans.AdminDataBean;
+
 import sun.reflect.ReflectionFactory.GetReflectionFactoryAction;
 
 public class AdminAutoQuote extends HttpServlet {

@@ -1,4 +1,4 @@
-package com.altagram.autoquote;
+package com.altagram.wordcounter;
 
 import net.sf.okapi.common.IResource;
 import net.sf.okapi.common.LocaleId;
