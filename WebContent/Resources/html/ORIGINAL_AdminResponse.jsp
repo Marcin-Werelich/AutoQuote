@@ -8,12 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<h5>Source Langs</h5>
 		<c:forEach items="${adminData.sourceLanguageNamesList}" var="sourceLangItem">
-			<select id="${sourceLangItem.value}_src_text" type="text" value="${sourceLangItem.key}" disabled/>
-				<option value="${sourceLangItem.value}" selected>${sourceLangItem.key}</option>
-				<c:forEach items="${adminData.allLanguageNamesList}" var="allLangItem">
-					<option value="${allLangItem.value}">${allLangItem.key}</option>
-				</c:forEach>
-			</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<input id="${sourceLangItem.value}_src_text" type="text" value="${sourceLangItem.key}" disabled/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<button id="${sourceLangItem.value}_src_edit" value="Edit" type="button" onclick="enableTextBoxEdit('${sourceLangItem.value}_src')"/>Edit</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<button id="${sourceLangItem.value}_src_save" value="Save" type="button" onclick="saveTextBoxEdit('${sourceLangItem.value}_src')" disabled/>Save</button><br>
 			
@@ -22,12 +17,7 @@
 	<h5><br></h5>
 	<h5>Target Langs</h5>
 		<c:forEach items="${adminData.targetLanguageNamesList}" var="targetLangItem">
-			<select id="${targetLangItem.value}_tgt_text" type="text" value="${targetLangItem.key}" disabled/>
-				<option value="${targetLangItem.value}" selected>${targetLangItem.key}</option>
-				<c:forEach items="${adminData.allLanguageNamesList}" var="allLangItem">
-					<option value="${allLangItem.value}">${allLangItem.key}</option>
-				</c:forEach>
-			</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<input id="${targetLangItem.value}_tgt_text" type="text" value="${targetLangItem.key}" disabled/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<button id="${targetLangItem.value}_tgt_edit" value="Edit" type="button" onclick="enableTextBoxEdit('${targetLangItem.value}_tgt')"/>Edit</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<button id="${targetLangItem.value}_tgt_save" value="Save" type="button" onclick="saveTextBoxEdit('${targetLangItem.value}_tgt')" disabled/>Save</button><br>			
 		</c:forEach>

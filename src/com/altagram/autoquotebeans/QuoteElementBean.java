@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 public class QuoteElementBean implements Serializable {
 	
+	private static final long serialVersionUID = 1L;
 	private String languagePair = null;
 	private String totalUnitPrice = null;
 	private String unitPrice = null;

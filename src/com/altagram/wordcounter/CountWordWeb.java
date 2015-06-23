@@ -2,11 +2,7 @@ package com.altagram.wordcounter;
 
 
 
-import java.io.File;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-
 import org.apache.commons.fileupload.FileItem;
 
 import net.sf.okapi.common.LocaleId;
@@ -19,7 +15,6 @@ import net.sf.okapi.filters.idml.IDMLFilter;
 import net.sf.okapi.filters.openoffice.OpenOfficeFilter;
 import net.sf.okapi.filters.openxml.OpenXMLFilter;
 import net.sf.okapi.filters.plaintext.PlainTextFilter;
-import net.sf.okapi.filters.tmx.TmxFilter;
 import net.sf.okapi.filters.xml.XMLFilter;
 
 

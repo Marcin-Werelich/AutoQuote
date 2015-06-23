@@ -7,6 +7,7 @@ public class Constants {
 	public static final String ADMIN_REDIRECT_URL = "admin";
 	
 	public static final String PRICE_LIST_PATH = "/Resources/files/pricelist.txt";
+	public static final String ALL_LANG_LIST_PATH = "/Resources/files/languagesAll.txt";
 	public static final String SOURCE_LANG_LIST_PATH = "/Resources/files/sourceLanguageList.txt";
 	public static final String TARGET_LANG_LIST_PATH = "/Resources/files/targetLanguageList.txt";
 	

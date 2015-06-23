@@ -6,6 +6,7 @@ import java.util.TreeMap;
 public class AdminDataBean {
 	
 	private HashMap<String, Double> priceList;
+	private TreeMap<String, String> allLanguageNamesList;
 	private TreeMap<String, String> targetLanguageNamesList;
 	private TreeMap<String, String> sourceLanguageNamesList;
 	
@@ -24,6 +25,10 @@ public class AdminDataBean {
 	public TreeMap<String, String> getSourceLanguageNamesList() {
 		return sourceLanguageNamesList;
 	}
+	
+	public TreeMap<String, String> getAllLanguageNamesList() {
+		return allLanguageNamesList;
+	}
 
 	public void setPriceList(HashMap<String, Double> priceList) {
 		this.priceList = priceList;
@@ -39,6 +44,10 @@ public class AdminDataBean {
 		this.sourceLanguageNamesList = sourceLanguageNamesList;
 	}
 
+	public void setAllLanguageNamesList(
+			TreeMap<String, String> allLanguageNamesList) {
+		this.allLanguageNamesList = allLanguageNamesList;
+	}
 	
 	
 }

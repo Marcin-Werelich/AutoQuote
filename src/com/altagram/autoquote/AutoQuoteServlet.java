@@ -2,23 +2,13 @@ package com.altagram.autoquote;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.Currency;
-import java.util.Dictionary;
-import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map.Entry;
 import java.util.TreeMap;
-import java.util.logging.Logger;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -28,9 +18,12 @@ import org.apache.commons.fileupload.FileItem;
 import com.altagram.autoquotebeans.AdminDataBean;
 import com.altagram.autoquotebeans.QuoteElementBean;
 
-public class AutoQuote extends HttpServlet {
+public class AutoQuoteServlet extends HttpServlet {
 
-	public AutoQuote() {
+	
+	private static final long serialVersionUID = 1L;
+
+	public AutoQuoteServlet() {
 
 	}
 
@@ -38,20 +31,20 @@ public class AutoQuote extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		
 		
-		HashMap<String, Double> priceList = AutoQuoteUtils
+		HashMap<String, Double> priceList = DataManagement
 				.getPriceList(getServletContext().getResourceAsStream(
 						Constants.PRICE_LIST_PATH));
 
-		TreeMap<String, String> sourceLangList = AutoQuoteUtils
+		TreeMap<String, String> sourceLangList = DataManagement
 				.getFullLanguageNamesList(getServletContext()
 						.getResourceAsStream(Constants.SOURCE_LANG_LIST_PATH));
 
-		TreeMap<String, String> targetLangList = AutoQuoteUtils
+		TreeMap<String, String> targetLangList = DataManagement
 				.getFullLanguageNamesList(getServletContext()
 						.getResourceAsStream(Constants.TARGET_LANG_LIST_PATH));
 		
 		
-		AdminDataBean adminData = AdminAutoQuoteUtils.setupAdminDataBean(
+		AdminDataBean adminData = AdminUtils.setupAdminDataBean(
 				sourceLangList, targetLangList, priceList);
 		
 		
@@ -144,14 +137,14 @@ public class AutoQuote extends HttpServlet {
 			return;
 		}
 		try {
-			priceList = AutoQuoteUtils.getPriceList(getServletContext()
+			priceList = DataManagement.getPriceList(getServletContext()
 					.getResourceAsStream(Constants.PRICE_LIST_PATH));
 			
-			fullLanguageNamesList = AutoQuoteUtils
+			fullLanguageNamesList = DataManagement
 					.getFullLanguageNamesList(getServletContext()
 							.getResourceAsStream(Constants.TARGET_LANG_LIST_PATH));
 			
-			sourceLanguageFull = AutoQuoteUtils.getFullLanguageName(
+			sourceLanguageFull = DataManagement.getFullLanguageName(
 					sourceLanguage, fullLanguageNamesList);
 		} catch (Exception ex) {
 			request.getRequestDispatcher(Constants.ERROR_PAGE_URL).forward(
@@ -161,13 +154,13 @@ public class AutoQuote extends HttpServlet {
 		// TODO total price
 		for (String targetLanguage : targetLanguages) {
 
-			tempPrice = AutoQuoteUtils.getPrice(sourceLanguage, targetLanguage,
+			tempPrice = DataManagement.getPrice(sourceLanguage, targetLanguage,
 					priceList);
 			tempQuote = AutoQuoteUtils.calculateQuote(wordCount, tempPrice);
 			tempQuoteFormatted = priceFormat.format(tempQuote);
 			tempPriceFormatted = priceFormat.format(tempPrice);
 
-			targetLanguageFull = AutoQuoteUtils.getFullLanguageName(
+			targetLanguageFull = DataManagement.getFullLanguageName(
 					targetLanguage, fullLanguageNamesList);
 
 			totalPrice += tempQuote;
