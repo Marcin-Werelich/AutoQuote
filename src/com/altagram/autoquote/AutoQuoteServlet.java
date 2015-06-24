@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.TreeMap;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -15,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.fileupload.FileItem;
 
+import com.altagram.admin_autoquote.AdminUtils;
 import com.altagram.autoquotebeans.AdminDataBean;
 import com.altagram.autoquotebeans.QuoteElementBean;
 
@@ -31,7 +33,7 @@ public class AutoQuoteServlet extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		
 		
-		HashMap<String, Double> priceList = DataManagement
+		TreeMap<String, Double> priceList = DataManagement
 				.getPriceList(getServletContext().getResourceAsStream(
 						Constants.PRICE_LIST_PATH));
 
@@ -70,7 +72,7 @@ public class AutoQuoteServlet extends HttpServlet {
 		String tempQuoteFormatted = "";
 		String tempFileName = "";
 
-		HashMap<String, Double> priceList;
+		TreeMap<String, Double> priceList;
 		TreeMap<String, String> fullLanguageNamesList;
 
 		List<String> targetLanguages = new ArrayList<String>();

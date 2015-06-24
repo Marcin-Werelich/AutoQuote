@@ -1,4 +1,4 @@
-package com.altagram.autoquote;
+package com.altagram.admin_autoquote;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -9,28 +9,26 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.altagram.autoquote.Constants;
+import com.altagram.autoquote.DataManagement;
 import com.altagram.autoquotebeans.AdminDataBean;
 
-public class AdminServlet extends HttpServlet {
+public class AdminServletTgtLangs extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 
-	public AdminServlet() {
+	public AdminServletTgtLangs() {
 		super();
 	}
 
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-
 		
-		
-		HashMap<String, Double> priceList = DataManagement
+		TreeMap<String, Double> priceList = DataManagement
 				.getPriceList(getServletContext().getResourceAsStream(
 						Constants.PRICE_LIST_PATH));
 
-		TreeMap<String, String> sourceLangList = DataManagement
-				.getFullLanguageNamesList(getServletContext()
-						.getResourceAsStream(Constants.SOURCE_LANG_LIST_PATH));
+		TreeMap<String, String> temp = new TreeMap();
 
 		TreeMap<String, String> targetLangList = DataManagement
 				.getFullLanguageNamesList(getServletContext()
@@ -41,13 +39,13 @@ public class AdminServlet extends HttpServlet {
 						.getResourceAsStream(Constants.ALL_LANG_LIST_PATH));
 
 		AdminDataBean adminData = AdminUtils.setupAdminDataBean(
-				sourceLangList, targetLangList, allLangList, priceList);
+				temp, targetLangList, allLangList, priceList);
 		
 		
 		
 		request.setAttribute("adminData", adminData);
 
-		request.getRequestDispatcher(Constants.ADMIN_RESPONSE_PAGE_URL).forward(request,
+		request.getRequestDispatcher(Constants.ADMIN_TGT_LANGS_PAGE_URL).forward(request,
 				response);
 
 	}

@@ -48,7 +48,7 @@
 	<servlet>
 		<servlet-name>AdminServlet</servlet-name>
 		<servlet-class>
-			com.altagram.autoquote.AdminServlet
+			com.altagram.admin_autoquote.AdminServlet
 		</servlet-class>
 	</servlet>
 
@@ -57,10 +57,47 @@
 		<url-pattern>/admin</url-pattern>
 	</servlet-mapping>
 
+	<servlet>
+		<servlet-name>AdminServletSrcLangs</servlet-name>
+		<servlet-class>
+			com.altagram.admin_autoquote.AdminServletSrcLangs
+		</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>AdminServletSrcLangs</servlet-name>
+		<url-pattern>/admin/src_langs</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>AdminServletTgtLangs</servlet-name>
+		<servlet-class>
+			com.altagram.admin_autoquote.AdminServletTgtLangs
+		</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>AdminServletTgtLangs</servlet-name>
+		<url-pattern>/admin/tgt_langs</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>AdminServletPrices</servlet-name>
+		<servlet-class>
+			com.altagram.admin_autoquote.AdminServletPrices
+		</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>AdminServletPrices</servlet-name>
+		<url-pattern>/admin/prices</url-pattern>
+	</servlet-mapping>
+
+
 	<security-constraint>
 		<web-resource-collection>
 			<web-resource-name>Admin</web-resource-name>
-			<url-pattern>/admin</url-pattern>
+			<url-pattern>/admin/*</url-pattern>
 		</web-resource-collection>
 		<auth-constraint>
 			<role-name>aq-admin</role-name>

@@ -1,11 +1,11 @@
 package com.altagram.autoquotebeans;
 
-import java.util.HashMap;
+import java.util.TreeMap;
 import java.util.TreeMap;
 
 public class AdminDataBean {
 	
-	private HashMap<String, Double> priceList;
+	private TreeMap<String, Double> priceList;
 	private TreeMap<String, String> allLanguageNamesList;
 	private TreeMap<String, String> targetLanguageNamesList;
 	private TreeMap<String, String> sourceLanguageNamesList;
@@ -14,7 +14,7 @@ public class AdminDataBean {
 		
 	}
 
-	public HashMap<String, Double> getPriceList() {
+	public TreeMap<String, Double> getPriceList() {
 		return priceList;
 	}
 
@@ -30,7 +30,7 @@ public class AdminDataBean {
 		return allLanguageNamesList;
 	}
 
-	public void setPriceList(HashMap<String, Double> priceList) {
+	public void setPriceList(TreeMap<String, Double> priceList) {
 		this.priceList = priceList;
 	}
 

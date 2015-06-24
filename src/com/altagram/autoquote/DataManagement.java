@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.TreeMap;
 import java.util.List;
 import java.util.Map.Entry;
 import java.util.Scanner;
@@ -12,11 +12,11 @@ import java.util.TreeMap;
 
 public class DataManagement {
 
-	public static HashMap<String, Double> getPriceList(InputStream input)
+	public static TreeMap<String, Double> getPriceList(InputStream input)
 			throws IOException {
 
 		List<String> lineList = new ArrayList<String>();
-		HashMap<String, Double> priceList = new HashMap<String, Double>();
+		TreeMap<String, Double> priceList = new TreeMap<String, Double>();
 		String[] lineSplit;
 
 		Scanner inputReader = new Scanner(new InputStreamReader(
@@ -38,7 +38,7 @@ public class DataManagement {
 	}
 
 	public static double getPrice(String sourceLanguage, String targetLanguage,
-			HashMap<String, Double> priceList) {
+			TreeMap<String, Double> priceList) {
 		String[] entrySplit;
 		for (Entry<String, Double> entry : priceList.entrySet()) {
 			entrySplit = entry.getKey().toString().split(">");
