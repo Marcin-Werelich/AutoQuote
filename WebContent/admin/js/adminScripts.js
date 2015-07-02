@@ -1,4 +1,4 @@
-function checkAndAddLangs(name,buttonName,selectItemId) {
+	function checkAndAddLangs(name, buttonName, selectItemId) {
         if(!document.getElementById(buttonName).disabled) {
             addAllLangsToLangSelect(selectItemId);
             enableTextBoxEditAndDisableAllOthers(name);
@@ -6,7 +6,7 @@ function checkAndAddLangs(name,buttonName,selectItemId) {
 
     }
 
-    function checkAndDeleteLangs(name,buttonName,selectItemId) {
+    function checkAndDeleteLangs(name, buttonName, selectItemId) {
         if(!document.getElementById(buttonName).disabled) {
             deleteAllLangsButSelected(selectItemId);
             saveTextBoxEdit(name);
@@ -40,9 +40,7 @@ function checkAndAddLangs(name,buttonName,selectItemId) {
 
     }
 
-
-
-    function enableTextBoxEditAndDisableAllOthers(name){
+    function enableSelectEditAndDisableAllOthers(name){
         var editButton = document.getElementById(name + '_edit');
         var saveButton = document.getElementById(name + '_save');
         var textBox = document.getElementById(name + '_text');
@@ -60,7 +58,7 @@ function checkAndAddLangs(name,buttonName,selectItemId) {
 
     }
 
-    function saveTextBoxEdit(name){
+    function saveSelectBoxEdit(name){
         var editButton = document.getElementById(name + '_edit');
         var saveButton = document.getElementById(name + '_save');
         var textBox = document.getElementById(name + '_text');
@@ -70,7 +68,7 @@ function checkAndAddLangs(name,buttonName,selectItemId) {
         textBox.disabled = true;
     }
 
-    function createOptionElement(idValue, textValue) {
+    function createSelectOptionElement(idValue, textValue) {
         var selectOption = document.createElement("OPTION");
         selectOption.setAttribute("id", idValue);
         selectOption.setAttribute("name", "option");
