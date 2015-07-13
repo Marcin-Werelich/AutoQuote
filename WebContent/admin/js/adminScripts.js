@@ -75,3 +75,24 @@
         selectOption.appendChild(document.createTextNode(textValue));
         return selectOption;
     }
+    
+    function addNewLanguage(idValue, textValue) {
+        var newLangFullElement = document.createElement("p");
+        var newLangTextBox = document.createElement("input");
+        var newLangTextboxText = document.createTextNode(textValue);
+        var newLangDeleteButton = document.createElement("button");
+        var newLangDeleteButtonText = document.createTextNode("Remove Language");
+
+        newLangFullElement.setAttribute("id", idValue);
+        newLangFullElement.setAttribute("name", "newLang");
+
+        newLangDeleteButton.setAttribute("onclick", "deleteNewLanguage(" + idValue + ")");
+
+        newLangFullElement.appendChild(newLangTextBox);
+        newLangFullElement.appendChild(newLangDeleteButton);
+        document.appendChild(newLangFullElement);
+    }
+
+    function deleteNewLanguage(idValue) {
+        document.removeChild(document.getElementById(idValue));
+    }
