@@ -15,6 +15,8 @@
 		<h4 ><a href="/AutoQuote/admin/tgt_langs">Manage target languages</a></h4>
 		<br>		
 		<h4 ><a href="/AutoQuote/admin/prices">Manage price list</a></h4>
+		<br><br><a href="/AutoQuote/">Back</a>
+		
 </body>
 
 </html>

@@ -6,8 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<a href="/AutoQuote/admin">Back to admin menu</a>
-<h2><br></h2>
+
 	<h5>Target Languages</h5>
 		<c:forEach items="${adminData.targetLanguageNamesList}" var="targetLangItem">
 			<select id="${targetLangItem.value}_tgt_text" type="text" value="${targetLangItem.key}" disabled/>
@@ -19,6 +18,8 @@
 			<button id="${targetLangItem.value}_tgt_edit" value="Edit" type="button" onclick="enableTextBoxEdit('${targetLangItem.value}_tgt')"/>Edit</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<button id="${targetLangItem.value}_tgt_save" value="Save" type="button" onclick="saveTextBoxEdit('${targetLangItem.value}_tgt')" disabled/>Save</button><br>			
 		</c:forEach>
+
+<br><br><a href="/AutoQuote/admin">Back to admin menu</a>
 
 <script type="text/javascript">
 function enableTextBoxEdit(name){

@@ -12,5 +12,6 @@
 			<br/><br/>
 			<c:out value="${stackTrace}"/>
 			<br/><br/>
+			<a href="/AutoQuote/">Back</a>
 	</body>
 </html>

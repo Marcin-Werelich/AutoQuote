@@ -1,41 +1,10 @@
-ar	Arabic
-bg	Bulgarian
-ca-es	Catalan
 zh-cn	Chinese (Simplified)
 zh-tw	Chinese (Traditional)
-hr	Croatian
-cz	Czech
-da	Danish
 en	English
-nl	Dutch
-fi	Finnish
 fr-fr	French (France)
-fr-ca	French (Quebec)
 de	German
-el	Greek
-he	Hebrew
-hi	Hindi
-hu	Hungarian
-id	Indonesian
 it	Italian
 ja	Japanese
 ko	Korean
-ms	Malaysian
-no	Norwegian
-pl	Polish
 pt-br	Portuguese (Brazil)
-pt-pt	Portuguese (Portugal)
-ro	Romanian
-ru	Russian
-sr	Serbian
-sk	Slovak
-sl	Slovenian
-es-ar	Spanish (Argentina)
-es-co	Spanish (Colombia)
-es-la	Spanish (Latin America)
-es-mx	Spanish (Mexico)
 es-es	Spanish (Spain)
-sv	Swedish
-th	Thai
-tr	Turkish
-uk	Ukrainian

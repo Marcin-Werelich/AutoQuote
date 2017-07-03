@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <a href="/AutoQuote/admin">Back to admin menu</a>
-<h2><br></h2>
+<br><br>
 	<h5>Price List</h5>
 		<c:forEach items="${adminData.priceList}" var="priceListItem">
 			<input id="${priceListItem.value}_prc_pair" type="text" value="${priceListItem.key}" disabled/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -15,6 +15,9 @@
 			<button id="${priceListItem.key}_prc_edit" value="Edit" type="button" onclick="enableTextBoxEdit('${priceListItem.key}_prc')"/>Edit</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<button id="${priceListItem.key}_prc_save" value="Save" type="button" onclick="saveTextBoxEdit('${priceListItem.key}_prc')" disabled/>Save</button><br>			
 		</c:forEach>
+
+<br><br><a href="/AutoQuote/admin">Back to admin menu</a>
+
 		
 <script type="text/javascript">
 function enableTextBoxEdit(name){

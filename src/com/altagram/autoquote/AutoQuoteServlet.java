@@ -84,7 +84,7 @@ public class AutoQuoteServlet extends HttpServlet {
 				.getPirceFormat(Constants.PRICE_DECIMAL_FORMAT, Constants.PRICE_CURRENCY_CODE,
 						RoundingMode.HALF_UP);
 
-		// Process data from HTTP request
+		// Process file data from HTTP request
 
 		try {
 

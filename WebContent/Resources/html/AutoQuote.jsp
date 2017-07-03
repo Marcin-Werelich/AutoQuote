@@ -44,6 +44,8 @@
     </br>
     <input type="submit" value="Submit data" onclick="return validateForm();">
  </form>
+ 
+ <br><br><a href="/AutoQuote/">Back</a>
 
 <script type="text/javascript" language="JavaScript">
     function validateForm() {

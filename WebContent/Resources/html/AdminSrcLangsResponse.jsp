@@ -6,8 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<a href="/AutoQuote/admin">Back to admin menu</a>
-<h2><br></h2>
+
 	<h5>Source Languages</h5>
 		<c:forEach items="${adminData.sourceLanguageNamesList}" var="sourceLangItem">
 			<select id="${sourceLangItem.value}_src_text" type="text" value="${sourceLangItem.key}" disabled/>
@@ -20,6 +19,8 @@
 			<button id="${sourceLangItem.value}_src_save" value="Save" type="button" onclick="return saveTextBoxEdit('${sourceLangItem.value}_src')" disabled/>Save</button><br>
 			
 		</c:forEach>
+		
+<br><br><a href="/AutoQuote/admin">Back to admin menu</a>
 
 <script type="text/javascript">
 function enableTextBoxEdit(name){
