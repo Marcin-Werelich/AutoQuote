@@ -14,7 +14,7 @@ import com.altagram.autoquote.DataManagement;
 import com.altagram.autoquotebeans.AdminDataBean;
 
 public class AdminServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+	//private static final long serialVefind /home/rsionUID = 1L;
 
 
 	public AdminServlet() {
