@@ -1,9 +1,10 @@
-package com.altagram.admin_autoquote;
+package com.werelich.admin_autoquote;
 
 import java.util.TreeMap;
-import java.util.TreeMap;
 
-import com.altagram.autoquotebeans.AdminDataBean;
+import com.werelich.autoquotebeans.AdminDataBean;
+
+import java.util.TreeMap;
 
 public class AdminUtils {
 

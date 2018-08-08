@@ -1,4 +1,4 @@
-package com.altagram.wordcounter;
+package com.werelich.wordcounter;
 
 
 

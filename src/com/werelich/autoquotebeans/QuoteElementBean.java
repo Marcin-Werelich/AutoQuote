@@ -1,4 +1,4 @@
-package com.altagram.autoquotebeans;
+package com.werelich.autoquotebeans;
 
 import java.io.Serializable;
 

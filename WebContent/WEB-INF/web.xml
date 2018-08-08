@@ -32,7 +32,7 @@
 	<servlet>
 		<servlet-name>AutoQuoteServlet</servlet-name>
 		<servlet-class>
-			com.altagram.autoquote.AutoQuoteServlet
+			com.werelich.autoquote.AutoQuoteServlet
 		</servlet-class>
 	</servlet>
 	
@@ -48,7 +48,7 @@
 	<servlet>
 		<servlet-name>AdminServlet</servlet-name>
 		<servlet-class>
-			com.altagram.admin_autoquote.AdminServlet
+			com.werelich.admin_autoquote.AdminServlet
 		</servlet-class>
 	</servlet>
 
@@ -60,7 +60,7 @@
 	<servlet>
 		<servlet-name>AdminServletSrcLangs</servlet-name>
 		<servlet-class>
-			com.altagram.admin_autoquote.AdminServletSrcLangs
+			com.werelich.admin_autoquote.AdminServletSrcLangs
 		</servlet-class>
 	</servlet>
 
@@ -72,7 +72,7 @@
 	<servlet>
 		<servlet-name>AdminServletTgtLangs</servlet-name>
 		<servlet-class>
-			com.altagram.admin_autoquote.AdminServletTgtLangs
+			com.werelich.admin_autoquote.AdminServletTgtLangs
 		</servlet-class>
 	</servlet>
 
@@ -84,7 +84,7 @@
 	<servlet>
 		<servlet-name>AdminServletPrices</servlet-name>
 		<servlet-class>
-			com.altagram.admin_autoquote.AdminServletPrices
+			com.werelich.admin_autoquote.AdminServletPrices
 		</servlet-class>
 	</servlet>
 

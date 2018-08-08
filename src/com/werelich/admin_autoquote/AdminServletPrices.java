@@ -1,4 +1,4 @@
-package com.altagram.admin_autoquote;
+package com.werelich.admin_autoquote;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -9,9 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.altagram.autoquote.Constants;
-import com.altagram.autoquote.DataManagement;
-import com.altagram.autoquotebeans.AdminDataBean;
+import com.werelich.autoquote.Constants;
+import com.werelich.autoquote.DataManagement;
+import com.werelich.autoquotebeans.AdminDataBean;
 
 public class AdminServletPrices extends HttpServlet {
 	private static final long serialVersionUID = 1L;

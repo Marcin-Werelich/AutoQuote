@@ -1,4 +1,4 @@
-package com.altagram.autoquote;
+package com.werelich.autoquote;
 
 import java.io.IOException;
 import java.io.InputStream;

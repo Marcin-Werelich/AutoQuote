@@ -1,4 +1,4 @@
-package com.altagram.autoquote;
+package com.werelich.autoquote;
 
 public class Constants {
 

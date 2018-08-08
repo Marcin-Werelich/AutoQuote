@@ -1,4 +1,4 @@
-package com.altagram.autoquote;
+package com.werelich.autoquote;
 
 import java.io.File;
 import java.io.IOException;
@@ -16,9 +16,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.fileupload.FileItem;
 
-import com.altagram.admin_autoquote.AdminUtils;
-import com.altagram.autoquotebeans.AdminDataBean;
-import com.altagram.autoquotebeans.QuoteElementBean;
+import com.werelich.admin_autoquote.AdminUtils;
+import com.werelich.autoquotebeans.AdminDataBean;
+import com.werelich.autoquotebeans.QuoteElementBean;
 
 public class AutoQuoteServlet extends HttpServlet {
 

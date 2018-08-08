@@ -1,4 +1,4 @@
-package com.altagram.autoquote;
+package com.werelich.autoquote;
 
 import java.io.File;
 import java.io.PrintWriter;
@@ -15,8 +15,8 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
-import com.altagram.autoquotebeans.QuoteElementBean;
-import com.altagram.wordcounter.CountWordWeb;
+import com.werelich.autoquotebeans.QuoteElementBean;
+import com.werelich.wordcounter.CountWordWeb;
 
 public class AutoQuoteUtils {
 
