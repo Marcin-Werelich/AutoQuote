@@ -33,21 +33,19 @@ public class AutoQuoteServlet extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		
 		
-		TreeMap<String, Double> priceList = DataManagement
-				.getPriceList(getServletContext().getResourceAsStream(
-						Constants.PRICE_LIST_PATH));
+		DataManagement priceListManagement = new DataManagement(getServletContext().getResourceAsStream(
+				Constants.PRICE_LIST_PATH), Constants.DATAMANAGEMENT_PRICELIST);
 
-		TreeMap<String, String> sourceLangList = DataManagement
-				.getFullLanguageNamesList(getServletContext()
-						.getResourceAsStream(Constants.SOURCE_LANG_LIST_PATH));
+		DataManagement sourceLangListManagement = new DataManagement(getServletContext()
+				.getResourceAsStream(Constants.SOURCE_LANG_LIST_PATH), Constants.DATAMANAGEMENT_LANGS);
+		
 
-		TreeMap<String, String> targetLangList = DataManagement
-				.getFullLanguageNamesList(getServletContext()
-						.getResourceAsStream(Constants.TARGET_LANG_LIST_PATH));
+		DataManagement targetLangListManagement = new DataManagement(getServletContext()
+				.getResourceAsStream(Constants.TARGET_LANG_LIST_PATH), Constants.DATAMANAGEMENT_LANGS);
 		
 		
 		AdminDataBean adminData = AdminUtils.setupAdminDataBean(
-				sourceLangList, targetLangList, priceList);
+				sourceLangListManagement.getFullLanguageNamesList(), targetLangListManagement.getFullLanguageNamesList(), priceListManagement.getPriceList());
 		
 		
 		request.setAttribute("adminData", adminData);
@@ -71,9 +69,16 @@ public class AutoQuoteServlet extends HttpServlet {
 		String tempPriceFormatted = "";
 		String tempQuoteFormatted = "";
 		String tempFileName = "";
-
-		TreeMap<String, Double> priceList;
-		TreeMap<String, String> fullLanguageNamesList;
+		DataManagement priceListManagement = new DataManagement(getServletContext().getResourceAsStream(
+				Constants.PRICE_LIST_PATH), Constants.DATAMANAGEMENT_PRICELIST);
+		
+		DataManagement sourceLangListManagement = new DataManagement(
+				getServletContext().getResourceAsStream(Constants.SOURCE_LANG_LIST_PATH),
+				Constants.DATAMANAGEMENT_LANGS);
+		
+		DataManagement targetLangListManagement = new DataManagement(getServletContext()
+				.getResourceAsStream(Constants.TARGET_LANG_LIST_PATH), Constants.DATAMANAGEMENT_LANGS);
+		
 
 		List<String> targetLanguages = new ArrayList<String>();
 		List<String> fileNamesList = new ArrayList<String>();
@@ -139,15 +144,9 @@ public class AutoQuoteServlet extends HttpServlet {
 			return;
 		}
 		try {
-			priceList = DataManagement.getPriceList(getServletContext()
-					.getResourceAsStream(Constants.PRICE_LIST_PATH));
-			
-			fullLanguageNamesList = DataManagement
-					.getFullLanguageNamesList(getServletContext()
-							.getResourceAsStream(Constants.TARGET_LANG_LIST_PATH));
-			
-			sourceLanguageFull = DataManagement.getFullLanguageName(
-					sourceLanguage, fullLanguageNamesList);
+						
+			sourceLanguageFull = sourceLangListManagement.getFullLanguageName(
+					sourceLanguage);
 		} catch (Exception ex) {
 			request.getRequestDispatcher(Constants.ERROR_PAGE_URL).forward(
 					AutoQuoteUtils.setupErrorRequest(request, ex), response);
@@ -156,14 +155,13 @@ public class AutoQuoteServlet extends HttpServlet {
 		// TODO total price
 		for (String targetLanguage : targetLanguages) {
 
-			tempPrice = DataManagement.getPrice(sourceLanguage, targetLanguage,
-					priceList);
+			tempPrice = priceListManagement.getPrice(sourceLanguage, targetLanguage);
 			tempQuote = AutoQuoteUtils.calculateQuote(wordCount, tempPrice);
 			tempQuoteFormatted = priceFormat.format(tempQuote);
 			tempPriceFormatted = priceFormat.format(tempPrice);
 
-			targetLanguageFull = DataManagement.getFullLanguageName(
-					targetLanguage, fullLanguageNamesList);
+			targetLanguageFull = targetLangListManagement.getFullLanguageName(
+					targetLanguage);
 
 			totalPrice += tempQuote;
 

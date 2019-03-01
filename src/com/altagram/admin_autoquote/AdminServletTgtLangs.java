@@ -24,22 +24,32 @@ public class AdminServletTgtLangs extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		
-		TreeMap<String, Double> priceList = DataManagement
-				.getPriceList(getServletContext().getResourceAsStream(
-						Constants.PRICE_LIST_PATH));
+//		TreeMap<String, Double> priceList = DataManagement
+//				.getPriceList(getServletContext().getResourceAsStream(
+//						Constants.PRICE_LIST_PATH));
+		
+		DataManagement priceListManagement = new DataManagement(getServletContext().getResourceAsStream(
+				Constants.PRICE_LIST_PATH), Constants.DATAMANAGEMENT_PRICELIST);
 
 		TreeMap<String, String> temp = new TreeMap();
 
-		TreeMap<String, String> targetLangList = DataManagement
-				.getFullLanguageNamesList(getServletContext()
-						.getResourceAsStream(Constants.TARGET_LANG_LIST_PATH));
+//		TreeMap<String, String> targetLangList = DataManagement
+//				.getFullLanguageNamesList(getServletContext()
+//						.getResourceAsStream(Constants.TARGET_LANG_LIST_PATH));
 		
-		TreeMap<String, String> allLangList = DataManagement
-				.getFullLanguageNamesList(getServletContext()
-						.getResourceAsStream(Constants.ALL_LANG_LIST_PATH));
+
+		DataManagement targetLangListManagement = new DataManagement(getServletContext()
+				.getResourceAsStream(Constants.TARGET_LANG_LIST_PATH), Constants.DATAMANAGEMENT_LANGS);
+		
+//		TreeMap<String, String> allLangList = DataManagement
+//				.getFullLanguageNamesList(getServletContext()
+//						.getResourceAsStream(Constants.ALL_LANG_LIST_PATH));
+		
+		DataManagement allLangListManagement = new DataManagement(getServletContext()
+				.getResourceAsStream(Constants.ALL_LANG_LIST_PATH), Constants.DATAMANAGEMENT_LANGS);
 
 		AdminDataBean adminData = AdminUtils.setupAdminDataBean(
-				temp, targetLangList, allLangList, priceList);
+				temp, targetLangListManagement.getFullLanguageNamesList(), allLangListManagement.getFullLanguageNamesList(), priceListManagement.getPriceList());
 		
 		
 		

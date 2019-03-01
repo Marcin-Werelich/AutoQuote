@@ -93,7 +93,7 @@
 		<url-pattern>/admin/prices</url-pattern>
 	</servlet-mapping>
 
-
+<!--
 	<security-constraint>
 		<web-resource-collection>
 			<web-resource-name>Admin</web-resource-name>
@@ -117,7 +117,7 @@
 		<description />
 		<role-name>aq-admin</role-name>
 	</security-role>
-
+-->
 </web-app>
 	
 

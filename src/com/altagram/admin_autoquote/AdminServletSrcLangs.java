@@ -16,37 +16,34 @@ import com.altagram.autoquotebeans.AdminDataBean;
 public class AdminServletSrcLangs extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-
 	public AdminServletSrcLangs() {
 		super();
 	}
 
-	protected void doGet(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
+		DataManagement sourceLangListManagement = new DataManagement(
+				getServletContext().getResourceAsStream(Constants.SOURCE_LANG_LIST_PATH),
+				Constants.DATAMANAGEMENT_LANGS);
 
-		TreeMap<String, String> sourceLangList = DataManagement
-				.getFullLanguageNamesList(getServletContext()
-						.getResourceAsStream(Constants.SOURCE_LANG_LIST_PATH));
+		DataManagement allLangListManagement = new DataManagement(
+				getServletContext().getResourceAsStream(Constants.ALL_LANG_LIST_PATH), Constants.DATAMANAGEMENT_LANGS);
 
-		TreeMap<String, String> allLangList = DataManagement
-				.getFullLanguageNamesList(getServletContext()
-						.getResourceAsStream(Constants.ALL_LANG_LIST_PATH));
 		
 		TreeMap<String, String> temp = new TreeMap();
-		
-		AdminDataBean adminData = AdminUtils.setupLangAdminDataBean(
-				sourceLangList, temp,  allLangList);
-					
+
+		AdminDataBean adminData = AdminUtils.setupLangAdminDataBean(sourceLangListManagement.getFullLanguageNamesList(),
+				temp, allLangListManagement.getFullLanguageNamesList());
+
 		request.setAttribute("adminData", adminData);
 
-		request.getRequestDispatcher(Constants.ADMIN_SRC_LANGS_PAGE_URL).forward(request,
-				response);
+		request.getRequestDispatcher(Constants.ADMIN_SRC_LANGS_PAGE_URL).forward(request, response);
 
 	}
 
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
 	}
 

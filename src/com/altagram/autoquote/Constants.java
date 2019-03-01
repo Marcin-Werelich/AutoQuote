@@ -6,6 +6,9 @@ public class Constants {
 	public static final String ADMIN_PASSWORD = "adm123";
 	public static final String ADMIN_REDIRECT_URL = "admin";
 	
+	public static final int DATAMANAGEMENT_PRICELIST = 1;
+	public static final int DATAMANAGEMENT_LANGS = 2;
+	
 	public static final String PRICE_LIST_PATH = "/Resources/files/pricelist.txt";
 	public static final String ALL_LANG_LIST_PATH = "/Resources/files/languagesAll.txt";
 	public static final String SOURCE_LANG_LIST_PATH = "/Resources/files/sourceLanguageList.txt";

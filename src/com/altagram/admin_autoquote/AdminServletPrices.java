@@ -24,13 +24,11 @@ public class AdminServletPrices extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
+		DataManagement dataManagement = new DataManagement(getServletContext().getResourceAsStream(
+						Constants.PRICE_LIST_PATH), Constants.DATAMANAGEMENT_PRICELIST);
 		
-		
-		TreeMap<String, Double> priceList = DataManagement
-				.getPriceList(getServletContext().getResourceAsStream(
-						Constants.PRICE_LIST_PATH));
 
-		AdminDataBean adminData = AdminUtils.setupPriceAdminDataBean(priceList);
+		AdminDataBean adminData = AdminUtils.setupPriceAdminDataBean(dataManagement.getPriceList());
 				
 		request.setAttribute("adminData", adminData);
 
